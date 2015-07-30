@@ -1,0 +1,43 @@
+{
+  "name": "content-formatter",
+  "version": "0.0.1",
+  "description": "My premium module",
+  "license": "MIT",
+  "repository": "natecavanaugh/content-formatter",
+  "author": {
+    "name": "Nate Cavanaugh",
+    "email": "nate@shift22.com",
+    "url": "alterform.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    ""
+  ],
+  "dependencies": {
+    "lodash": "^3.10.0",
+    "string-sub": "0.0.1"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "chai-string": "*",
+    "coveralls": "*",
+    "gulp-coveralls": "*",
+    "gulp-istanbul": "*",
+    "istanbul": "*",
+    "sinon": "*",
+    "gulp": "*",
+    "gulp-load-plugins": "*",
+    "gulp-help": "*",
+    "run-sequence": "*",
+    "gulp-mocha": "*"
+  }
+}
