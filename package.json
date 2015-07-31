@@ -13,8 +13,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha",
-    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "coveralls": "gulp coveralls",
+    "test": "gulp test-coverage"
   },
   "files": [
     "index.js",
