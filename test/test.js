@@ -37,7 +37,7 @@ describe(
 			function() {
 				var customFormatGetter = Formatter.create(
 					{
-						extensions: /\.foo$/,
+						includes: /\.foo$/,
 						id: 'customFormatGetter'
 					}
 				);
@@ -68,7 +68,7 @@ describe(
 
 				var FooCustom1 = Formatter.create(
 					{
-						extensions: /\.test$/,
+						includes: /\.test$/,
 						id: 'TestFiles',
 						excludes: /foo\.test$/,
 						prototype: {
@@ -143,7 +143,7 @@ describe(
 
 				var CustomFormatter = Formatter.create(
 					{
-						extensions: /\.txt$/,
+						includes: /\.txt$/,
 						id: 'initCustomFormatter',
 						prototype: {
 							init: init
@@ -214,7 +214,7 @@ describe(
 
 				Formatter.create(
 					{
-						extensions: /\.js$/,
+						includes: /\.js$/,
 						id: testFormatterId
 					}
 				);
@@ -223,7 +223,7 @@ describe(
 					function() {
 						Formatter.create(
 							{
-								extensions: /\.js$/,
+								includes: /\.js$/,
 								id: testFormatterId
 							}
 						);
@@ -234,7 +234,7 @@ describe(
 		);
 
 		it(
-			'should throw an error when called without extensions',
+			'should throw an error when called without includes',
 			function() {
 				assert.throws(
 					function() {
@@ -244,19 +244,19 @@ describe(
 							}
 						);
 					},
-					'The extensions property must be a RegExp Object'
+					'The includes property must be a RegExp Object'
 				);
 
 				assert.throws(
 					function() {
 						Formatter.create(
 							{
-								extensions: '',
+								includes: '',
 								id: 'FooExtTest2'
 							}
 						);
 					},
-					'The extensions property must be a RegExp Object'
+					'The includes property must be a RegExp Object'
 				);
 			}
 		);
@@ -269,7 +269,7 @@ describe(
 				var FooCustom1 = Formatter.create(
 					{
 						constructor: constructor,
-						extensions: /\.js$/,
+						includes: /\.js$/,
 						id: 'FooCustom1'
 					}
 				);

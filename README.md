@@ -24,7 +24,7 @@ $ npm install --save content-formatter
 var Formatter = require('content-formatter');
 
 var JSFormatter = Formatter.create({
-	extensions: /\.js$/,
+	includes: /\.js$/,
 	id: 'JS'
 });
 
@@ -38,18 +38,18 @@ var newContents = jsFormatter.format(contents);
 
 One thing you may notice in the above example is that you need to handle reading the content on your own. This is so that you have more flexibility on where your content comes from (perhaps you're reading from a database, or some other data source).
 
-`Formatter.create` takes an object that, at the bare minimum, requires only 2 properties: `extensions` and `id`.
+`Formatter.create` takes an object that, at the bare minimum, requires only 2 properties: `includes` and `id`.
 
 This method returns the constructor of your custom formatter.
 
-You can think of `extensions` as the test that gets run over what ever path you pass into the constructor (and in the same way that the path could be anything, the `extensions` could also be any sort of test for that path).
+You can think of `includes` as the test that gets run over what ever path you pass into the constructor (and in the same way that the path could be anything, the `includes` could also be any sort of test for that path).
 This allows you to specify that you want your formatter to only run on certain types of data.
 
-Also of note, in addition to `extensions`, you can also pass an `excludes` regex, which will allow you to negate the `extensions` regex. This is useful to filter out items where JavaScript's regex is more limited.
+Also of note, in addition to `includes`, you can also pass an `excludes` regex, which will allow you to negate the `includes` regex. This is useful to filter out items where JavaScript's regex is more limited.
 For instance, if you wanted to include all `.js` files, but exclude any minified files, you could do something like
 ```js
 Formatter.create({
-	extensions: /\.js$/,
+	includes: /\.js$/,
 	excludes: /[_.-]min\.js$/,
 	id: 'JS'
 });
@@ -64,7 +64,7 @@ So, for instance:
 var Formatter = require('content-formatter');
 
 var JSFormatter = Formatter.create({
-	extensions: /\.js$/,
+	includes: /\.js$/,
 	id: 'JS'
 	constructor: function() {
 		console.log('This is a constructor');
@@ -106,7 +106,7 @@ If you do not wish to pass a `constructor`, but yet want to have a method called
 
 ### Getting the appropriate formatter
 Let's say you have a bunch of formatters defined in your code, but don't want to check each one manually to see if it should format the contents of the path.
-`Formatter.get` is a static method that will loop through all registered formatters and return to you an instance of the first one that passes the `extensions` test.
+`Formatter.get` is a static method that will loop through all registered formatters and return to you an instance of the first one that passes the `includes` test.
 It accepts all of the arguments that a normal `Formatter` constructor would have, but it instantiates the class for you, and gives you back that instance.
 
 For example, using the module from above:
@@ -153,8 +153,8 @@ Your implementation can overwrite this, and send whatever it likes, but we use t
 ###
 
 ## TODO
-- I'm contemplating on removing the requirement of an id property to `Formatter.create`, as well as renaming `extensions` to `include`, `allow`, `test` or `filter`.
-The idea behind this is to reinforce the idea that the formatter could be used and test against any source, as well as add the capability for multiple filters to run.
+- I'm currently thinking through a way for multiple formatters to run, instead of having it be only one per include type.
+- I would like to also remove the requirement of passing an ID for a formatter. If multiple filters eventually can run, it's pointless to have an ID (even now, I think it isn't really needed).
 
 ## License
 
