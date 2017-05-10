@@ -25,7 +25,7 @@
   ],
   "dependencies": {
     "drip": "^1.4.0",
-    "lodash": "^3.10.0",
+    "lodash": "^4.17.4",
     "string-sub": "0.0.1"
   },
   "devDependencies": {
