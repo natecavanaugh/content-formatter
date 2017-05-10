@@ -3,7 +3,6 @@ var chai = require('chai');
 var sinon = require('sinon');
 
 var Formatter = require('../');
-var sub = require('string-sub');
 
 chai.use(require('chai-string'));
 
@@ -228,7 +227,7 @@ describe(
 							}
 						);
 					},
-					sub('The id: "{0}" is already taken', testFormatterId)
+					`The id: "${testFormatterId}" is already taken`
 				);
 			}
 		);
